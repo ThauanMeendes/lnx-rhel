@@ -1,0 +1,215 @@
+---
+- hosts: rhel
+  tasks:
+#    - name: 'Instalando o pacote -> rh-python36 '
+#      yum:
+#        name: rh-python36
+#        state: latest
+#      become: yes
+#    - name: 'Instalando o pacote -> Python36'
+#      yum: name={{ item }}
+#      become: yes
+#      with_items:
+#        - rh-python36-python.x86_64
+#        - rh-python36-PyYAML.x86_64
+#        - rh-python36-python-virtualenv.noarch
+
+    - name: 'Instalando o pacote -> rh-python36-python.x86_64'
+      yum:
+        name: rh-python36-python.x86_64
+        state: latest
+      become: yes
+
+    - name: 'Instalando o pacote -> rh-python36-PyYAML.x86_64'
+      yum:
+        name: rh-python36-PyYAML.x86_64
+        state: latest
+      become: yes
+
+    - name: 'Instalando o pacote -> rh-python36-python-virtualenv.noarch'
+      yum:
+        name: rh-python36-python-virtualenv.noarch
+        state: latest
+      become: yes
+
+    - name: 'Instalando o pacote -> rh-python36-python-psycopg2.x86_64'
+      yum:
+        name: rh-python36-python-psycopg2.x86_64
+        state: latest
+      become: yes
+
+    - name: 'Instalando o pacote python-psycopg2.x86_64'
+      yum:
+        name: python-psycopg2.x86_64
+        state: latest
+      become: yes
+
+    - name: 'Instalando o pacote python27-python-psycopg2.x86_64'
+      yum:
+        name: python27-python-psycopg2.x86_64
+        state: latest
+      become: yes
+
+    - name: 'Instalando o pacote python33-python-psycopg2.x86_64'
+      yum:
+        name: python33-python-psycopg2.x86_64
+        state: latest
+      become: yes
+
+    - name: 'Instalando o pacote rh-python34-python-psycopg2.x86_64'
+      yum:
+        name: rh-python34-python-psycopg2.x86_64
+        state: latest
+      become: yes
+
+    - name: 'Instalando o pacote rh-python35-python-psycopg2.x86_64'
+      yum:
+        name: rh-python35-python-psycopg2.x86_64
+        state: latest
+      become: yes
+
+    - name: 'Exportando as variaveis do Python36'
+      become: yes
+      shell: cp /opt/rh/rh-python36/enable /etc/profile.d/rh-python36.sh
+
+    - name: 'Instalando o pacote -> rh-postgresql95.x86_64 : Package that installs rh-postgresql95'
+      yum:
+        name: rh-postgresql95.x86_64
+        state: latest
+      become: yes
+      
+    - name: 'Instalando o pacote -> rh-postgresql95-postgresql.x86_64 : PostgreSQL client programs'
+      yum:
+        name: rh-postgresql95-postgresql.x86_64
+        state: latest
+      become: yes
+
+    - name: 'Instalando o pacote -> rh-postgresql95-postgresql-contrib.x86_64 : Extension modules distributed with PostgreSQL'
+      yum:
+        name: rh-postgresql95-postgresql-contrib.x86_64 
+        state: latest
+      become: yes
+
+    - name: 'Instalando o pacote -> rh-postgresql95-postgresql-devel.x86_64 : PostgreSQL development header files and libraries'
+      yum:
+        name: rh-postgresql95-postgresql-devel.x86_64
+        state: latest
+      become: yes
+ 
+    - name: 'Instalando o pacote -> rh-postgresql95-postgresql-docs.x86_64 : Extra documentation for PostgreSQL'
+      yum:
+        name: rh-postgresql95-postgresql-docs.x86_64
+        state: latest
+      become: yes
+ 
+    - name: 'Instalando o pacote -> rh-postgresql95-postgresql-libs.x86_64 : The shared libraries required for any PostgreSQL clients'
+      yum:
+        name: rh-postgresql95-postgresql-libs.x86_64
+        state: latest
+      become: yes
+ 
+    - name: 'Instalando o pacote -> rh-postgresql95-postgresql-plperl.x86_64 : The Perl procedural language for PostgreSQL'
+      yum:
+        name: rh-postgresql95-postgresql-plperl.x86_64
+        state: latest
+      become: yes
+ 
+    - name: 'Instalando o pacote -> rh-postgresql95-postgresql-plpython.x86_64 : The Python2 procedural language for PostgreSQL'
+      yum:
+        name: rh-postgresql95-postgresql-plpython.x86_64
+        state: latest
+      become: yes
+
+    - name: 'Instalando o pacote -> rh-postgresql95-postgresql-server.x86_64 : The programs needed to create and run a PostgreSQL server'
+      yum:
+        name: rh-postgresql95-postgresql-server.x86_64
+        state: latest
+      become: yes
+
+    - name: 'Instalando o pacote -> rh-postgresql95-postgresql-static.x86_64 : Statically linked PostgreSQL libraries'
+      yum:
+        name: rh-postgresql95-postgresql-static.x86_64
+        state: latest
+      become: yes
+
+    - name: 'Instalando o pacote -> rh-postgresql95-postgresql-test.x86_64 : The test suite distributed with PostgreSQL'
+      yum:
+        name: rh-postgresql95-postgresql-test.x86_64
+        state: latest
+      become: yes
+
+    - name: 'Instalando o pacote -> rh-postgresql95-runtime.x86_64 : Package that handles rh-postgresql95 Software Collection.'
+      yum:
+        name: rh-postgresql95-runtime.x86_64
+        state: latest
+      become: yes
+
+    - name: 'Instalando o pacote -> rh-postgresql95-scldevel.x86_64 : Package shipping development files for rh-postgresql95'
+      yum:
+        name: rh-postgresql95-scldevel.x86_64
+        state: latest
+      become: yes    
+
+    - name: 'Exportando as variaveis do PostgreSQL 9.5'
+      become: yes
+      shell: cp /opt/rh/rh-postgresql95/enable /etc/profile.d/rh-postgresql95.sh
+
+    - name: 'Iniciando o serviço initdb do PostgreSQL'
+      become: yes
+      shell: service rh-postgresql95-postgresql initdb
+
+    - name: 'Executando o Enable no PostgresSQL'
+      become: yes
+      shell: systemctl enable rh-postgresql95-postgresql
+
+    - name: 'Executando <start> no serviço PostgreSQL'
+      become: yes
+      shell: systemctl start rh-postgresql95-postgresql
+
+- hosts: rhel
+  become: yes
+  become_user: postgres
+  gather_facts: no
+
+  vars:
+    dbname: thauan
+    dbuser: vagrant
+    dbpassword: vagrant
+    dbtable: teste
+    
+  tasks:
+  - name: Garantir que o banco de dados seja criado
+    postgresql_db: name={{dbname}} encoding=UTF-8 lc_collate=de_DE.UTF-8 lc_ctype=de_DE.UTF-8 template=template0
+
+  - name: Criar usuário thauan para meu aplicativo
+    become: yes
+    become_user: postgres
+    postgresql_user:
+      name: "{{ dbuser }}"
+      password: "{{ dbpassword }}"
+
+  - name: Garantir que tenhamos acesso do novo usuário
+    become: yes
+    become_user: postgres
+    postgresql_privs:
+      db: "{{ dbname }}"
+      role: "{{ dbuser }}"
+      objs: ALL_IN_SCHEMA
+      privs: SELECT,INSERT,UPDATE,DELETE
+
+
+
+#  - name: 'Garantir que o banco de dados seja criado'
+#    postgresql_db: name={{dbname}} encoding=UTF-8 lc_collate=de_DE.UTF-8 lc_ctype=de_DE.UTF-8 template=template0
+#
+#  - name: 'assegure que o usuario tenha acesso ao banco de dados'
+#    postgresql_user: db={{dbname}} name={{dbuser}} password={{dbpassword}} priv=ALL
+#
+#  - name: 'Crie usuário de django e conceda acesso a banco de dados e tabela de produtos'
+#    postgresql_user: db={{dbaname}} name={{dbuser}} password={{dbpassword}} priv="CONNECT/{{dbtable}}:ALL"
+#
+#  - name: 'assegure que o usuario não tenha privilegios desnecessarios'
+#    postgresql_user: name={{dbuser}} role_attr_flags=NOSUPERUSER,NOCREATEDB
+#  
+#  - name: 'assegure que nenhum outro usuario possa acessar o banco de dados'
+#    postgresql_privs: db={{dbname}} role=PUBLIC type=database priv=ALL state=absent
