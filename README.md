@@ -2,6 +2,5 @@
 Install and Configure PostgreSQL using Ansible
 
 # hosts
-Declare host the private network
-  Ex: 127.0.0.1 (localhost)
+Declare what your private network will be | Ex: 127.0.0.1 (localhost)
   
